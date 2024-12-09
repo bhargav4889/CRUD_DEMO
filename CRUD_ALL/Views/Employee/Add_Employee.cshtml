@@ -1,0 +1,53 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+@model CRUD_ALL.Models.Employee_Model;
+
+<div class="container mt-5">
+    <div class="card p-4">
+        <h2 class="text-center">Add Employee</h2>
+        <hr />
+
+        <form asp-action="Add_Employee" asp-controller="Employee" method="post">
+            <div class="form-group mb-3">
+                <label for="Name"><span style="color:red">*</span> Name</label>
+                <input type="text" class="form-control" asp-for=Name placeholder="Enter employee name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="Email">Email</label>
+                <input type="text" class="form-control" asp-for=Email placeholder="Enter employee Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="Password"><span style="color:red;">*</span> Password</label>
+                <input type="password" class="form-control" asp-for=Password placeholder="Enter Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="Confirm-Password"><span style="color:red;">*</span> Confirm Password</label>
+                <input type="password" class="form-control" asp-for=Confirm_Password placeholder="Enter Confirm Passowrd" />
+                <span asp-validation-for="Confirm_Password" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="d-flex justify-content-md-center">
+                <button type="submit" class="btn btn-primary mx-2">Add Employee</button>
+                <button type="reset" class="btn btn-danger mx-2">Reset Data</button>
+            </div>
+
+        </form>
+
+        @if (ViewBag.InsertFailMsg != null)
+        {
+            <div class="alert alert-danger mt-3">
+                @ViewBag.InsertFailMsg
+            </div>
+        }
+    </div>
+</div>
